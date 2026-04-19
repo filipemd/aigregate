@@ -1,5 +1,7 @@
 # AIGregate
 
+[filipemd.github.io/aigregate](https://filipemd.github.io/aigregate)
+
 MVP de um agregador de notícias de tecnologia usando IA e a API do Gemini.
 
 Ele funciona pesquisando por notícias em feeds RSS de subreddits de programaçãp.
