@@ -1,0 +1,20 @@
+baseURL = 'https://filipemd.github.io/aigregate'
+languageCode = 'en'
+title = 'AIGregate'
+
+theme = "hugo-PaperMod"
+
+enableRobotsTXT = true
+
+[params]
+	description = 'AIGregate is a website that aggregates the most impactful daily tech news, summarize them, and show the original sources.'
+	github = 'https://github.com/filipemd/aigregate'
+
+	mainSections = ["posts"]
+
+	ShowRssButtonInSectionTermList = true
+
+[[menu.main]]
+	name = "Posts"
+	url = "/posts/"
+	weight = 10
