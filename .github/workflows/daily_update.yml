@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: '0 23 * * *'
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - 'README_pt.md'
+      - '.gitignore'
+      - '.gitmodules'
+      - '.github/**'
 
 permissions:
   contents: write
@@ -17,16 +26,20 @@ jobs:
       - name: Checkout local repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Good practice for git operations
+          fetch-depth: 0
           submodules: true
 
       - name: Set up Python
+        # Only setup Python if this is a scheduled run or manual trigger
+        if: github.event_name != 'push'
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
           cache: 'pip'
 
       - name: Run Content Script
+        # Skip this step if the workflow was triggered by a manual push
+        if: github.event_name != 'push'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -35,11 +48,14 @@ jobs:
           python scripts/create_news_summary.py "content/posts/$(date +%Y-%m-%d).md"
           
       - name: Commit and Push new post
+        # Skip this step if the workflow was triggered by a manual push
+        if: github.event_name != 'push'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add content/posts/
-          git commit -m "Add daily automated post: $(date +%Y-%m-%d)." || echo "No changes to commit."
+          # [skip ci] tells GitHub NOT to run the workflow again for this specific commit
+          git commit -m "Add daily automated post: $(date +%Y-%m-%d) [skip ci]" || echo "No changes to commit."
           git push
 
       - name: Setup Hugo
@@ -49,9 +65,11 @@ jobs:
           extended: true
 
       - name: Build Hugo Site
+        # This always runs, whether it's a push or a schedule
         run: hugo --minify --baseURL "https://filipemd.github.io/aigregate"
 
       - name: Deploy to GitHub Pages
+        # This always runs to ensure the site is updated
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
