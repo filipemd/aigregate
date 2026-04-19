@@ -10,11 +10,16 @@ enableRobotsTXT = true
 	description = 'AIGregate is a website that aggregates the most impactful daily tech news, summarize them, and show the original sources.'
 	github = 'https://github.com/filipemd/aigregate'
 
-	mainSections = ["posts"]
+	mainSections = ["posts", "about"]
 
 	ShowRssButtonInSectionTermList = true
 
 [[menu.main]]
 	name = "Posts"
 	url = "/posts/"
+	weight = 10
+
+[[menu.main]]
+	name = "About"
+	url = "/about/"
 	weight = 10
