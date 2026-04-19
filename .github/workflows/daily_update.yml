@@ -23,12 +23,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+          cache: 'pip'
 
       - name: Run Content Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           pip install -r scripts/requirements.txt
+          mkdir -p content/posts/
           python scripts/create_news_summary.py "content/posts/$(date +%Y-%m-%d).md"
           
       - name: Commit and Push new post
