@@ -4,8 +4,8 @@
 
 MVP de um agregador de notícias de tecnologia usando IA e a API do Gemini.
 
-Ele funciona pesquisando por notícias em feeds RSS de subreddits de programaçãp.
+Ele funciona pesquisando por notícias em feeds RSS de subreddits de programação.
 
-Para rodar, consiga a chave de API gratuita do Gemini, coloque a variável de ambiente `GEMINI_API_KEY` como sendo ela, e rode o script `scripts/create_news_summary.py` (instalando os pacotes PIP do `requirements.txt`) com o parâmetro de arquivo de saída em Markdown.
+Para rodar, consiga a chave de API gratuita do Gemini, coloque a variável de ambiente `GEMINI_API_KEY` como sendo ela, e rode o script `scripts/create_news_summary.py` (depois de ter instalando os pacotes PIP do `requirements.txt`) com o parâmetro de arquivo de saída em Markdown.
 
-Ao invés de utilizar um servidor, se utiliza o SSG Hugo para gerar o HTML e o Github Actions para, todo dia, às 11 na noite, gerar o post.
+Ao invés de utilizar um servidor, se utiliza do SSG Hugo para gerar o HTML e o Github Actions para, todo dia, às 11 na noite, gerar o post.
