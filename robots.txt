@@ -1,1 +1,3 @@
 User-agent: *
+Disallow:
+Sitemap: https://filipemd.github.io/aigregate/sitemap.xml
