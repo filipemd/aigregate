@@ -7,4 +7,4 @@ AIGregate is a website that aggregates the most impactful daily tech news, summa
 
 [Source code](https://github.com/filipemd/aigregate)
 
-[Posts](/posts)
+# Latest posts:
