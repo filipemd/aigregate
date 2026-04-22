@@ -10,6 +10,7 @@ on:
     paths-ignore:
       - 'README.md'
       - 'README_pt.md'
+      - 'LICENSE'
       - 'scripts/**'
       - '.gitignore'
       - '.gitmodules'
@@ -25,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout local repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: true
@@ -33,7 +34,7 @@ jobs:
       - name: Set up Python
         # Only setup Python if this is a scheduled run or manual trigger
         if: github.event_name != 'push'
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.x'
           cache: 'pip'
