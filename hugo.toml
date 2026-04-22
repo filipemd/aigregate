@@ -7,12 +7,19 @@ theme = "hugo-PaperMod"
 enableRobotsTXT = true
 
 [params]
+	env = 'production'
 	description = 'AIGregate is a website that aggregates the most impactful daily tech news, summarize them, and show the original sources.'
 	github = 'https://github.com/filipemd/aigregate'
 
 	mainSections = ["posts", "about"]
 
+	ShowShareButtons = true
+	ShowReadingTime = true
+	ShowBreadCrumbs = true
+	ShowCodeCopyButtons = true
 	ShowRssButtonInSectionTermList = true
+	ShowPageNums = true
+	ShowToc = true
 
 [[menu.main]]
 	name = "Posts"
